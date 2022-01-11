@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="description" content="Welcome to Chai Playground! This is a simple interactive web application that allows you to build your own chat bot.">
+    <meta name="keywords" content="chat,bot,AI,Chai">
+    <meta name="author" content="Ziyi Zhu">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="public/images/chai-black.svg"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="public/main.css">
+
+    <title>Chai Playground</title>
+  </head>
+  <body>
+    <header>
+      <div class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand varela" href="#">
+          <img src="public/images/chai.svg" width="36px" height="36px" class="d-inline-block align-top" alt="">
+          Chai Playground
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDiv" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarDiv">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="https://chai.ml/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://chai.ml/dev">Developer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://chai.ml/docs">Documentation</a>
+            </li>
+          </ul>
+
+          <ul class="nav nav-pills justify-content-end" id="pills-tab" role="tablist">
+            <li class="nav-item mx-1" role="presentation">
+              <a class="nav-link btn-outline-light active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Chat</a>
+            </li>
+            <li class="nav-item mx-1" role="presentation">
+              <a class="nav-link btn-outline-light" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Raw</a>
+            </li>
+          </ul>
+      </div>
+    </header>
+
+    <main role="main" class="p-3">
+      <div class="row">
+        
+        <div class="container py-5 px-4">
+          <!-- For demo purpose-->
+          <!-- <header class="text-center">
+            <h1 class="display-4 text-white">Bootstrap Chat</h1>
+            <p class="text-white lead mb-0">An elegant chat widget compatible with Bootstrap 4</p>
+            <p class="text-white lead mb-4">Snippet by
+              <a href="https://bootstrapious.com" class="text-white">
+                <u>Bootstrapious</u></a>
+            </p>
+          </header> -->
+
+          <div class="row rounded-lg overflow-hidden shadow">
+            <!-- Chat Box-->
+            <div class="col-md-7 px-0">
+              <div  class="px-4 py-5 chat-box bg-white" id="chatBox">
+                <div class="tab-content" id="pills-tabContent">
+                  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div id="conversation"></div>
+                  </div>
+                  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <textarea class="form-control" id="prompt">Enter text here...</textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Typing area -->
+              <form action="#" class="bg-light" id="chat">
+                <div class="input-group">
+                  <input type="text" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light" id="userInput">
+                  <div class="input-group-append">
+                    <button id="button-addon2" type="submit" class="btn btn-link"> <i class="fa fa-paper-plane"></i></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- Users box-->
+            <div class="col-md-5 px-0">
+              <div class="bg-white">
+
+                <div class="bg-gray px-4 py-2 bg-light">
+                  <p class="h5 mb-0 py-1">Settings</p>
+                </div>
+
+                <div class="messages-box">
+                  <div class="list-group rounded-0">
+
+                    <a class="list-group-item list-group-item-action active text-white rounded-0">
+                      <div class="media"><img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg" alt="user" width="50" class="rounded-circle" id="botImg">
+                        <div class="media-body ml-4">
+                          <div class="d-flex align-items-center justify-content-between mb-1">
+                            <h6 class="mb-0" id="botName">Jessica</h6><small class="small font-weight-bold">25 Dec</small>
+                          </div>
+                          <p class="font-italic mb-0 text-small" id="botInfo">Jessica is a friendly and talkative person. User wants to chat and have some fun with Jessica.</p>
+                        </div>
+                      </div>
+                    </a>
+
+                    <div class="p-4 mb-3 rounded">
+                      <form id="target">
+                        <fieldset>
+                          <div class="form-group">
+                            <label class="col-form-label" for="botNameInput">Name</label>
+                            <input type="text" class="form-control" id="botNameInput" value="Jessica">
+                          </div>
+                          <div class="form-group">
+                            <label class="col-form-label" for="presetSelect">Preset</label>
+                            <select class="form-control" id="presetSelect">
+                              <option value="0" selected>Friend</option>
+                              <option value="1">Romantic</option>
+                            </select>
+                          </div>
+                          <div class="form-group"> 
+                            <label for="temperature" class="col-form-label">Temperature</label>
+                            <input type="range" class="custom-range" id="temperature" min="0" max="1" step="0.1" value ="0.6" data-toggle="tooltip" data-placement="top" title="0.6">
+                            <label for="repPenalty" class="col-form-label">Repetition penalty</label>
+                            <input type="range" class="custom-range" id="repPenalty" min="1" max="4" step="0.1" value ="1.1" data-toggle="tooltip" data-placement="top" title="1.1">
+                          </div>
+                          <div class="form-group">
+                            <label class="col-form-label" for="inputDefault">Response length</label>
+                            <input type="number" class="form-control" value="64" min="10" max="256" id="resLength">
+                          </div>
+                          <div class="form-group">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" id="stopSeq" value="" checked="">
+                                Stop sequence
+                              </label>
+                            </div>
+                          </div>
+                          <!-- <button type="submit" class="btn btn-primary">Apply</button> -->
+                          <!-- <button type="reset" class="btn btn-secondary">Reset</button> -->
+                        </fieldset>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="public/main.js"></script>
+  </body>
+</html>
