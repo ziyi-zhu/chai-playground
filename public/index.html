@@ -128,13 +128,42 @@
                             </select>
                           </div>
                           <div class="form-group"> 
-                            <label for="temperature" class="col-form-label">Temperature</label>
+                            <label for="temperature" class="col-form-label">
+                              Temperature
+                              <span class="btn-link" data-toggle="tooltip" data-placement="top" title="Temperature controls the randomness of the generated text. A value of 0 makes the engine deterministic, which means that it will always generate the same output for a given input text. A value of 1 makes the engine take the most risks and use a lot of creativity.">
+                                <i class="fa fa-info-circle"></i>
+                              </span>
+                            </label>
                             <input type="range" class="custom-range" id="temperature" min="0" max="1" step="0.1" value ="0.6" data-toggle="tooltip" data-placement="top" title="0.6">
-                            <label for="repPenalty" class="col-form-label">Repetition penalty</label>
+                            <label for="repPenalty" class="col-form-label">
+                              Top k
+                              <span class="btn-link" data-toggle="tooltip" data-placement="top" title="Top-K sampling means sorting by probability and zero-ing out the probabilities for anything below the k'th token. A lower value improves quality by removing the tail and making it less likely to go off topic.">
+                                <i class="fa fa-info-circle"></i>
+                              </span>
+                            </label>
+                            <input type="range" class="custom-range" id="topK" min="1" max="100" step="1" value ="40" data-toggle="tooltip" data-placement="top" title="40">
+                            <label for="repPenalty" class="col-form-label">
+                              Top p
+                              <span class="btn-link" data-toggle="tooltip" data-placement="top" title="Top-P is an alternative way of controlling the randomness and creativity of the generated text. We recommend that only one of Temperature and Top P are used, so when using one of them, make sure that the other is set to 1.">
+                                <i class="fa fa-info-circle"></i>
+                              </span>
+                            </label>
+                            <input type="range" class="custom-range" id="topP" min="0" max="1" step="0.1" value ="1.1" data-toggle="tooltip" data-placement="top" title="1">
+                            <label for="repPenalty" class="col-form-label">
+                              Repetition penalty
+                              <span class="btn-link" data-toggle="tooltip" data-placement="top" title="Repetition penalty works by lowering the chances of a word being selected again the more times that word has already been used. In other words, it works to prevent repetitive word usage.">
+                                <i class="fa fa-info-circle"></i>
+                              </span>
+                            </label>
                             <input type="range" class="custom-range" id="repPenalty" min="1" max="4" step="0.1" value ="1.1" data-toggle="tooltip" data-placement="top" title="1.1">
                           </div>
                           <div class="form-group">
-                            <label class="col-form-label" for="inputDefault">Response length</label>
+                            <label class="col-form-label" for="inputDefault">
+                              Response length
+                              <span class="btn-link" data-toggle="tooltip" data-placement="top" title="Response length is the length of the generated text, in tokens, you’d like based on your prompt. A token is roughly 4 characters including alphanumerics and special characters.">
+                                <i class="fa fa-info-circle"></i>
+                              </span>
+                            </label>
                             <input type="number" class="form-control" value="64" min="10" max="256" id="resLength">
                           </div>
                           <div class="form-group">
@@ -142,6 +171,9 @@
                               <label class="form-check-label">
                                 <input class="form-check-input" type="checkbox" id="stopSeq" value="" checked="">
                                 Stop sequence
+                                <span class="btn-link" data-toggle="tooltip" data-placement="top" title="Stop sequences allow you to define one or more sequences that when generated force GPT-J to stop.">
+                                  <i class="fa fa-info-circle"></i>
+                                </span>
                               </label>
                             </div>
                           </div>

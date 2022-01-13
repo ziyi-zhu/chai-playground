@@ -9,6 +9,8 @@ var userName = 'User';
 var stopSeq = [`${botName}:`, `${userName}:`, "\n"]
 
 var temperature = 0.6;
+var topK = 40;
+var topP = 1;
 var repPenalty = 1.1;
 var resLength = 64;
 
@@ -71,6 +73,8 @@ $("#target").change(function(event) {
   botPreset = parseInt($("#presetSelect").children("option:selected").val());
 
   temperature = parseFloat($("#temperature").val());
+  topK = parseInt($("#topK").val());
+  topP = parseFloat($("#topP").val());
   repPenalty = parseFloat($("#repPenalty").val());
   resLength = parseInt($("#resLength").val());
 
@@ -127,8 +131,8 @@ function generateResponse() {
 function request(prompt) {
   let json = {
     "text": prompt,
-    "top_p": 1,
-    "top_k": 40,
+    "top_p": topP,
+    "top_k": topK,
     "temperature": temperature,
     "repetition_penalty": repPenalty,
     "length": resLength,
