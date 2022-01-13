@@ -20,17 +20,17 @@
   </head>
   <body>
     <header>
-      <div class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="navbar navbar-expand-md navbar-dark bg-dark">
         <a class="navbar-brand varela" href="#">
           <img src="images/chai.svg" width="36px" height="36px" class="d-inline-block align-top" alt="">
-          Chai Playground
+          <span class="brand-name font-weight-bold mr-2">chai</span> Playground
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDiv" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarDiv">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="https://chai.ml/">Home</a>
             </li>
             <li class="nav-item">
@@ -39,42 +39,41 @@
             <li class="nav-item">
               <a class="nav-link" href="https://chai.ml/docs">Documentation</a>
             </li>
-          </ul>
-
-          <ul class="nav nav-pills justify-content-end" id="pills-tab" role="tablist">
-            <li class="nav-item mx-1" role="presentation">
-              <a class="nav-link btn-outline-light active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Chat</a>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/chai-nexus/chai_py"><i class="fa fa-github fa-lg mr-2"></i>GitHub</a>
+              <li class="nav-item">
+              <a class="nav-link" href="https://www.linkedin.com/company/seamless-chai"><i class="fa fa-linkedin-square fa-lg mr-2"></i>LinkedIn</a>
             </li>
-            <li class="nav-item mx-1" role="presentation">
-              <a class="nav-link btn-outline-light" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Raw</a>
+            <li class="nav-item">
+              <a class="nav-link" href="https://chat.whatsapp.com/Btbz9tYOpyG72oqI4NfGE1"><i class="fa fa-whatsapp fa-lg mr-2"></i>WhatsApp</a>
             </li>
           </ul>
+        </div>
       </div>
     </header>
 
     <main role="main" class="p-3">
       <div class="row">
         
-        <div class="container py-5 px-4">
-          <!-- For demo purpose-->
-          <!-- <header class="text-center">
-            <h1 class="display-4 text-white">Bootstrap Chat</h1>
-            <p class="text-white lead mb-0">An elegant chat widget compatible with Bootstrap 4</p>
-            <p class="text-white lead mb-4">Snippet by
-              <a href="https://bootstrapious.com" class="text-white">
-                <u>Bootstrapious</u></a>
-            </p>
-          </header> -->
+        <div class="container px-4">
+          <ul class="nav nav-tabs" id="chatTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link active" id="chat-tab" data-toggle="tab" href="#chat" role="tab" aria-controls="home" aria-selected="true">Chat</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" id="raw-tab" data-toggle="tab" href="#raw" role="tab" aria-controls="profile" aria-selected="false">Raw</a>
+            </li>
+          </ul>
 
           <div class="row rounded-lg overflow-hidden shadow">
             <!-- Chat Box-->
             <div class="col-md-7 px-0">
               <div  class="px-4 py-5 chat-box bg-white" id="chatBox">
-                <div class="tab-content" id="pills-tabContent">
-                  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="tab-content" id="chatTabContent">
+                  <div class="tab-pane fade show active" id="chat" role="tabpanel" aria-labelledby="chat-tab">
                     <div id="conversation"></div>
                   </div>
-                  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                  <div class="tab-pane fade" id="raw" role="tabpanel" aria-labelledby="raw-tab">
                     <textarea class="form-control" id="prompt">Enter text here...</textarea>
                   </div>
                 </div>

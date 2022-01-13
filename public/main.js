@@ -208,13 +208,13 @@ function updateBotInfo() {
 
 
 function updatePrompt(data) {
-  if ($("ul#pills-tab li a.active").text() == 'Raw') {
+  if ($("ul#tabs-tab li a.active").text() == 'Raw') {
     speed = 10;
   } else {
     speed = 0;
   }
 
-  i = 0
+  i = 0;
   response = data.result[0].completion;
   typeWriter();
 }

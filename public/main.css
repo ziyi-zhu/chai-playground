@@ -5,9 +5,12 @@
   resize: none;
 }
 
+.brand-name {
+  font-size: 26px;
+}
+
 .varela {
   font-family: "Varela Round", sans-serif;
-  font-size: 26px;
 }
 
 /*
@@ -57,4 +60,8 @@ body {
 input::placeholder {
   font-size: 0.9rem;
   color: #999;
+}
+
+.nav-tabs li a {
+  color: white;
 }
