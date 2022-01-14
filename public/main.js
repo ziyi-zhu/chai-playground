@@ -54,64 +54,68 @@ $(document).ready(function(){
            .tooltip('show');
   });
 
+  $("#prompt").change(function(event) {
+    updateBotInfo();
+    renderChatBox();
+  });
+    
+  $("#target").change(function(event) {
+    event.preventDefault();
+
+    botName = $("#botNameInput").val();
+    botPreset = parseInt($("#presetSelect").children("option:selected").val());
+
+    temperature = parseFloat($("#temperature").val());
+    topK = parseInt($("#topK").val());
+    topP = parseFloat($("#topP").val());
+    repPenalty = parseFloat($("#repPenalty").val());
+    resLength = parseInt($("#resLength").val());
+
+    if ($('#stopSeq').is(":checked")) {
+      stopSeq = [`${botName}:`, `${userName}:`, "\n"];
+    } else {
+      stopSeq = [];
+    };
+
+    $("#prompt").val(eval(presets[botPreset]));
+
+    updateBotInfo();
+    renderChatBox();
+  });
+
+  $("#chatSubmit").click(function(event) {
+    event.preventDefault();
+
+    let userInput = $("#userInput").val();
+    $("#userInput").val("");
+    if (userInput) {
+      $("#loading").show();
+      $("#generate").attr("disabled", true);
+
+      let prompt = $("#prompt").val();
+      $("#prompt").val(prompt + ' ' + userInput + `\n${botName}:`);
+
+      renderChatBox();
+      generateResponse();
+    } 
+  });
+
+  $("#generate").click(function(event) {
+    $("#loading").show();
+    $("#generate").attr("disabled", true);
+    generateResponse();
+  });
+
+  initialise();
+});
+
+function initialise() {
   $("#prompt").val(eval(presets[botPreset]));
   $("#loading").hide();
 
   updateBotInfo();
   renderChatBox();
-});
-
-$("#prompt").change(function(event) {
-  updateBotInfo();
-  renderChatBox();
-});
-  
-$("#target").change(function(event) {
-  event.preventDefault();
-
-  botName = $("#botNameInput").val();
-  botPreset = parseInt($("#presetSelect").children("option:selected").val());
-
-  temperature = parseFloat($("#temperature").val());
-  topK = parseInt($("#topK").val());
-  topP = parseFloat($("#topP").val());
-  repPenalty = parseFloat($("#repPenalty").val());
-  resLength = parseInt($("#resLength").val());
-
-  if ($('#stopSeq').is(":checked")) {
-    stopSeq = [`${botName}:`, `${userName}:`, "\n"];
-  } else {
-    stopSeq = [];
-  };
-
-  $("#prompt").val(eval(presets[botPreset]));
-
-  updateBotInfo();
-  renderChatBox();
-});
-
-$("#chat").submit(function(event) {
-  event.preventDefault();
-
-  let userInput = $("#userInput").val();
-  $("#userInput").val("");
-  if (userInput) {
-    $("#loading").show();
-    $("#generate").attr("disabled", true);
-
-    let prompt = $("#prompt").val();
-    $("#prompt").val(prompt + ' ' + userInput + `\n${botName}:`);
-
-    renderChatBox();
-    generateResponse();
-  } 
-});
-
-$("#generate").click(function(event) {
-  $("#loading").show();
-  $("#generate").attr("disabled", true);
-  generateResponse();
-});
+}
 
 function generateResponse() {
   let prompt = $("#prompt").val();
